@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object SquareGitHubFactory {
+object SquareGithubFactory {
     fun make(): SuqareGitHubInterface {
         val retrofit = Retrofit.Builder()
             .baseUrl(MyContract.baseUrl)

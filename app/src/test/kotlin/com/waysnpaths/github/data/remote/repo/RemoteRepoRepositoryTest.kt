@@ -1,6 +1,7 @@
 package com.waysnpaths.github.data.remote.repo
 
-import com.waysnpaths.github.data.remote.SuqareGitHubInterface
+import com.google.firebase.database.core.Repo
+import com.waysnpaths.github.data.remote.SuqareGithubInterface
 import com.waysnpaths.github.domain.model.Repo
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver
@@ -15,7 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner
 class RemoteRepoRepositoryTest {
 
     @Mock
-    lateinit var squareGitHubInterface: SuqareGitHubInterface
+    lateinit var squareGitHubInterface: SuqareGithubInterface
 
     @Mock
     lateinit var repoMapper: RepoMapper

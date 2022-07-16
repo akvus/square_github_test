@@ -1,19 +1,24 @@
 package com.waysnpaths.github
 
-import android.app.Application
-import com.waysnpaths.github.ui.serviceLocator.appModule
-import com.waysnpaths.github.ui.serviceLocator.dbModule
-import com.waysnpaths.github.ui.serviceLocator.remoteModule
-import com.waysnpaths.github.ui.serviceLocator.viewModelModule
-import org.koin.android.ext.android.startKoin
+import androidx.multidex.MultiDexApplication
+import com.waysnpaths.github.ui.serviceLocator.*
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 import timber.log.Timber
 
 // todo the app should be unit tested, but it already took too much time
-class MyApplication: Application() {
+class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
 
         Timber.plant(Timber.DebugTree())
-        startKoin(this, listOf(appModule, viewModelModule, remoteModule, dbModule))
+        startKoin{
+            androidContext(this@MyApplication)
+
+            modules(
+                appModule, mainModule, repositoryDetailsModule, repositoryListModule,
+                remoteModule, dbModule
+            )
+        }
     }
 }
