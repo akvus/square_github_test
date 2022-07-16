@@ -1,4 +1,4 @@
-package com.waysnpaths.github.domain.model
+package com.waysnpaths.github.feature.repository_list.domain
 
 class Repo {
     var name: String = ""

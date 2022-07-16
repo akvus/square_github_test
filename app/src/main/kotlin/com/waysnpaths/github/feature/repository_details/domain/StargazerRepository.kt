@@ -1,8 +1,7 @@
-package com.waysnpaths.github.domain.repository
+package com.waysnpaths.github.feature.repository_details.domain
 
-import com.waysnpaths.github.domain.model.Stargazer
 import io.reactivex.Single
 
 interface StargazerRepository {
-    fun get(repoName: String) : Single<List<Stargazer>>
+    fun get(repoName: String): Single<List<Stargazer>>
 }

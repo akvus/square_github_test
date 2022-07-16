@@ -1,4 +1,4 @@
-package com.waysnpaths.github.data.database
+package com.waysnpaths.github.common.data.database
 
 import android.content.Context
 import androidx.room.Room

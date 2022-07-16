@@ -1,7 +1,7 @@
-package com.waysnpaths.github.data.database.bookmark
+package com.waysnpaths.github.feature.repository_details.data.bookmark
 
-import com.waysnpaths.github.domain.Mapper
-import com.waysnpaths.github.domain.model.Bookmark
+import com.waysnpaths.github.common.data.Mapper
+import com.waysnpaths.github.feature.repository_details.domain.Bookmark
 
 class BookmarkMapper : Mapper<BookmarkEntity, Bookmark> {
     override fun map(from: BookmarkEntity): Bookmark {

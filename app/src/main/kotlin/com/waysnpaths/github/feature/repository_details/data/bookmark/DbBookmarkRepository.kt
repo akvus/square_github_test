@@ -1,7 +1,10 @@
-package com.waysnpaths.github.data.database.bookmark
+package com.waysnpaths.github.feature.repository_details.data.bookmark
 
-import com.waysnpaths.github.domain.model.Bookmark
-import com.waysnpaths.github.domain.repository.BookmarkRepository
+import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkDao
+import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkEntityMapper
+import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkMapper
+import com.waysnpaths.github.feature.repository_details.domain.Bookmark
+import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
 import io.reactivex.Completable
 import io.reactivex.Maybe
 

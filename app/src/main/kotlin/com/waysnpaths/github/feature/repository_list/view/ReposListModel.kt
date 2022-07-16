@@ -1,7 +1,7 @@
-package com.waysnpaths.github.ui.view.reposList
+package com.waysnpaths.github.feature.repository_list.view
 
-import com.waysnpaths.github.domain.model.Repo
-import com.waysnpaths.github.ui.Event
+import com.waysnpaths.github.common.view.Event
+import com.waysnpaths.github.feature.repository_list.domain.Repo
 
 data class ReposListModel(
     // todo could be some loading/loaded state

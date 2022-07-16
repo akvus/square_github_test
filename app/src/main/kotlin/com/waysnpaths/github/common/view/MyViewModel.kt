@@ -1,11 +1,11 @@
-package com.waysnpaths.github.ui
+package com.waysnpaths.github.common.view
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.CompositeDisposable
 
-abstract class MyViewModel<Model>: ViewModel()  {
+abstract class MyViewModel<Model> : ViewModel() {
     protected val disposables = CompositeDisposable()
 
     protected val modelLiveData by lazy { MutableLiveData<Model>() }
@@ -13,6 +13,7 @@ abstract class MyViewModel<Model>: ViewModel()  {
     fun getModel(): LiveData<Model> {
         return modelLiveData
     }
+
     override fun onCleared() {
         disposables.clear()
         super.onCleared()

@@ -1,4 +1,4 @@
-package com.waysnpaths.github.ui.view.reposList
+package com.waysnpaths.github.feature.repository_list.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.waysnpaths.github.R
-import com.waysnpaths.github.ui.util.plusAssign
+import com.waysnpaths.github.common.view.util.plusAssign
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.android.synthetic.main.repos_list_fragment.*
-import org.koin.android.viewmodel.ext.android.viewModel
 
 // todo maybe creating VM, init VM and rendering model could be abstracted
 class ReposListFragment : Fragment() {
@@ -22,8 +20,12 @@ class ReposListFragment : Fragment() {
 
     private var reposAdapter: ReposListAdapter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.repos_list_fragment, container, false);
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.repos_list_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

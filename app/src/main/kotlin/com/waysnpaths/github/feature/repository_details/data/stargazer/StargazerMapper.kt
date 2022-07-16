@@ -1,7 +1,7 @@
 package com.waysnpaths.github.data.remote.stargazer
 
-import com.waysnpaths.github.domain.Mapper
-import com.waysnpaths.github.domain.model.Stargazer
+import com.waysnpaths.github.common.data.Mapper
+import com.waysnpaths.github.feature.repository_details.domain.Stargazer
 
 class StargazerMapper : Mapper<StargazerResponse, Stargazer> {
     override fun map(from: StargazerResponse): Stargazer {

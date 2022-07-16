@@ -1,6 +1,5 @@
-package com.waysnpaths.github.domain.repository
+package com.waysnpaths.github.feature.repository_details.domain
 
-import com.waysnpaths.github.domain.model.Bookmark
 import io.reactivex.Completable
 import io.reactivex.Maybe
 

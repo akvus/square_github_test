@@ -1,12 +1,11 @@
-package com.waysnpaths.github.ui.view.main
+package com.waysnpaths.github.feature.main.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.waysnpaths.github.R
-import com.waysnpaths.github.ui.routing.ReposListRoute
-import org.koin.android.viewmodel.ext.android.viewModel
+import com.waysnpaths.github.common.view.routing.ReposListRoute
 
 class MainActivity : AppCompatActivity() {
 

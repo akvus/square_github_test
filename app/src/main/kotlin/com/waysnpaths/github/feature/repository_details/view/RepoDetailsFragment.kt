@@ -1,4 +1,4 @@
-package com.waysnpaths.github.ui.view.repoDetails
+package com.waysnpaths.github.feature.repository_details.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.waysnpaths.github.R
-import kotlinx.android.synthetic.main.repos_details_fragment.*
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class RepoDetailsFragment : Fragment() {
 
@@ -17,8 +15,12 @@ class RepoDetailsFragment : Fragment() {
 
     private var stargazersAdapter: StargazersAdapter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.repos_details_fragment, container, false);
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.repos_details_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ class RepoDetailsFragment : Fragment() {
             adapter = stargazersAdapter
         }
         btnBookmark.setOnClickListener { viewModel.onBookmark(getRepoName()) }
-        btnRemoveBookmark.setOnClickListener { viewModel.onRemoveBookmark(getRepoName())}
+        btnRemoveBookmark.setOnClickListener { viewModel.onRemoveBookmark(getRepoName()) }
     }
 
     private fun initViewModel() {

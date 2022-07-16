@@ -1,22 +1,21 @@
-package com.waysnpaths.github.ui.serviceLocator
+package com.waysnpaths.github.common.view.serviceLocator
 
-import com.waysnpaths.github.data.remote.SquareGitHubFactory
-import com.waysnpaths.github.data.remote.repo.RemoteRepoRepository
-import com.waysnpaths.github.data.remote.repo.RepoMapper
-import com.waysnpaths.github.data.remote.stargazer.RemoteStargazerRepository
+import com.waysnpaths.github.common.data.remote.SquareGithubFactory
+import com.waysnpaths.github.feature.repository_list.data.repo.RepoMapper
 import com.waysnpaths.github.data.remote.stargazer.StargazerMapper
-import com.waysnpaths.github.domain.repository.RepoRepository
-import com.waysnpaths.github.domain.repository.StargazerRepository
-import org.koin.dsl.module.module
+import com.waysnpaths.github.feature.repository_details.data.stargazer.RemoteStargazerRepository
+import com.waysnpaths.github.feature.repository_list.data.repo.RemoteRepoRepository
+import org.koin.dsl.module
+
 
 val remoteModule = module {
     single {
-        SquareGitHubFactory.make()
+        SquareGithubFactory.make()
     }
 
     factory { RepoMapper() }
     factory { StargazerMapper() }
 
-    factory { RemoteRepoRepository(get(), get()) as RepoRepository }
-    factory { RemoteStargazerRepository(get(), get()) as StargazerRepository }
+    factory { RemoteRepoRepository(get(), get()) }
+    factory { RemoteStargazerRepository(get(), get()) }
 }

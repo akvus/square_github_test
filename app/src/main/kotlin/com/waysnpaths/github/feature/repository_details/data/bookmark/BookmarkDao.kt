@@ -1,4 +1,4 @@
-package com.waysnpaths.github.data.database.bookmark
+package com.waysnpaths.github.feature.repository_details.data.bookmark
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -11,9 +11,9 @@ interface BookmarkDao {
     @Query("SELECT * FROM bookmarkEntity WHERE repoName=:repoName")
     fun get(repoName: String): Maybe<BookmarkEntity?>
 
-    @Insert()
+    @Insert
     fun insert(bookmark: BookmarkEntity)
 
-    @Delete()
+    @Delete
     fun delete(bookmark: BookmarkEntity)
 }

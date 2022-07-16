@@ -1,8 +1,7 @@
-package com.waysnpaths.github.domain.repository
+package com.waysnpaths.github.feature.repository_list.domain
 
-import com.waysnpaths.github.domain.model.Repo
 import io.reactivex.Single
 
 interface RepoRepository {
-    fun get() : Single<List<Repo>>
+    fun get(): Single<List<Repo>>
 }

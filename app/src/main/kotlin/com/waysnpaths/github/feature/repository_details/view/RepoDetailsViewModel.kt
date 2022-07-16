@@ -1,11 +1,11 @@
-package com.waysnpaths.github.ui.view.repoDetails
+package com.waysnpaths.github.feature.repository_details.view
 
-import com.waysnpaths.github.domain.model.Bookmark
-import com.waysnpaths.github.domain.model.Stargazer
-import com.waysnpaths.github.domain.repository.BookmarkRepository
-import com.waysnpaths.github.domain.repository.StargazerRepository
-import com.waysnpaths.github.ui.MyViewModel
-import com.waysnpaths.github.ui.util.plusAssign
+import com.waysnpaths.github.common.view.MyViewModel
+import com.waysnpaths.github.common.view.util.plusAssign
+import com.waysnpaths.github.feature.repository_details.domain.Bookmark
+import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
+import com.waysnpaths.github.feature.repository_details.domain.Stargazer
+import com.waysnpaths.github.feature.repository_details.domain.StargazerRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
@@ -39,7 +39,7 @@ class RepoDetailsViewModel(
     }
 
     private fun onStargazersReceived(stargazers: List<Stargazer>) {
-         modelLiveData.value = modelLiveData.value?.copy(stargazers = stargazers)
+        modelLiveData.value = modelLiveData.value?.copy(stargazers = stargazers)
     }
 
     private fun onError(throwable: Throwable) {

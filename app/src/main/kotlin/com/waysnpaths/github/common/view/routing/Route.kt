@@ -1,10 +1,10 @@
-package com.waysnpaths.github.ui.routing
+package com.waysnpaths.github.common.view.routing
 
 import androidx.fragment.app.Fragment
-import com.waysnpaths.github.ui.view.repoDetails.RepoDetailsFragment
-import com.waysnpaths.github.ui.view.reposList.ReposListFragment
+import com.waysnpaths.github.feature.repository_details.view.RepoDetailsFragment
+import com.waysnpaths.github.feature.repository_list.view.ReposListFragment
 
-sealed class Route() {
+sealed class Route {
     abstract fun newFragment(): Fragment
 }
 

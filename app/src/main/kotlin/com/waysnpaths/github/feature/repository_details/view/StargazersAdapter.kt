@@ -1,4 +1,4 @@
-package com.waysnpaths.github.ui.view.repoDetails
+package com.waysnpaths.github.feature.repository_details.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.waysnpaths.github.R
-import com.waysnpaths.github.domain.model.Stargazer
+import com.waysnpaths.github.feature.repository_details.domain.Stargazer
 
 class StargazersAdapter : ListAdapter<Stargazer, StargazersAdapter.Holder>(ItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.stargazer_rv_item, parent, false))
+        return Holder(
+            LayoutInflater.from(parent.context).inflate(R.layout.stargazer_rv_item, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {

@@ -1,8 +1,10 @@
 package com.waysnpaths.github.data.remote.repo
 
-import com.google.firebase.database.core.Repo
-import com.waysnpaths.github.data.remote.SuqareGithubInterface
-import com.waysnpaths.github.domain.model.Repo
+import com.waysnpaths.github.common.data.remote.SuqareGithubInterface
+import com.waysnpaths.github.feature.repository_list.domain.Repo
+import com.waysnpaths.github.feature.repository_list.data.repo.RemoteRepoRepository
+import com.waysnpaths.github.feature.repository_list.data.repo.RepoMapper
+import com.waysnpaths.github.feature.repository_list.data.repo.RepoResponse
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver
 import org.junit.Before

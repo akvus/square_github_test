@@ -1,12 +1,12 @@
-package com.waysnpaths.github.data.remote.repo
+package com.waysnpaths.github.feature.repository_list.data.repo
 
-import com.waysnpaths.github.data.remote.SuqareGitHubInterface
-import com.waysnpaths.github.domain.model.Repo
-import com.waysnpaths.github.domain.repository.RepoRepository
+import com.waysnpaths.github.common.data.remote.SuqareGithubInterface
+import com.waysnpaths.github.feature.repository_list.domain.Repo
+import com.waysnpaths.github.feature.repository_list.domain.RepoRepository
 import io.reactivex.Single
 
 class RemoteRepoRepository(
-    private val squareGitHubInterface: SuqareGitHubInterface,
+    private val squareGitHubInterface: SuqareGithubInterface,
     private val repoMapper: RepoMapper
 ) : RepoRepository {
     override fun get(): Single<List<Repo>> {

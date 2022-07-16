@@ -1,14 +1,14 @@
-package com.waysnpaths.github.ui.view.reposList
+package com.waysnpaths.github.feature.repository_list.view
 
-import com.waysnpaths.github.domain.model.Bookmark
-import com.waysnpaths.github.domain.model.Repo
-import com.waysnpaths.github.domain.repository.BookmarkRepository
-import com.waysnpaths.github.domain.repository.RepoRepository
-import com.waysnpaths.github.ui.Event
-import com.waysnpaths.github.ui.MyViewModel
-import com.waysnpaths.github.ui.routing.RepoDetailsRoute
-import com.waysnpaths.github.ui.routing.Router
-import com.waysnpaths.github.ui.util.plusAssign
+import com.waysnpaths.github.common.view.Event
+import com.waysnpaths.github.common.view.MyViewModel
+import com.waysnpaths.github.common.view.routing.RepoDetailsRoute
+import com.waysnpaths.github.common.view.routing.Router
+import com.waysnpaths.github.common.view.util.plusAssign
+import com.waysnpaths.github.feature.repository_list.domain.Repo
+import com.waysnpaths.github.feature.repository_list.domain.RepoRepository
+import com.waysnpaths.github.feature.repository_details.domain.Bookmark
+import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiFunction
@@ -48,7 +48,7 @@ class ReposListViewModel(
         Timber.e(throwable)
         throwable.message?.let {
             modelLiveData.value = modelLiveData.value?.copy(message = Event(it))
-                    ?: ReposListModel(message = Event(it))
+                ?: ReposListModel(message = Event(it))
         }
     }
 

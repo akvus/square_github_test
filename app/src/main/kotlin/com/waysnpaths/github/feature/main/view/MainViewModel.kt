@@ -1,9 +1,9 @@
-package com.waysnpaths.github.ui.view.main
+package com.waysnpaths.github.feature.main.view
 
-import com.waysnpaths.github.ui.MyViewModel
-import com.waysnpaths.github.ui.routing.ReposListRoute
-import com.waysnpaths.github.ui.routing.Router
-import com.waysnpaths.github.ui.util.plusAssign
+import com.waysnpaths.github.common.view.MyViewModel
+import com.waysnpaths.github.common.view.routing.ReposListRoute
+import com.waysnpaths.github.common.view.routing.Router
+import com.waysnpaths.github.common.view.util.plusAssign
 
 class MainViewModel(
     private val router: Router

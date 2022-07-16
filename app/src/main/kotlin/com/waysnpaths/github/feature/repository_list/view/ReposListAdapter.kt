@@ -1,4 +1,4 @@
-package com.waysnpaths.github.ui.view.reposList
+package com.waysnpaths.github.feature.repository_list.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +9,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.waysnpaths.github.R
-import com.waysnpaths.github.domain.model.Repo
+import com.waysnpaths.github.feature.repository_list.domain.Repo
 import io.reactivex.subjects.PublishSubject
 
 class ReposListAdapter : ListAdapter<Repo, ReposListAdapter.Holder>(ItemCallback()) {
     val onClickSubject = PublishSubject.create<Repo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.repo_rv_item, parent, false))
+        return Holder(
+            LayoutInflater.from(parent.context).inflate(R.layout.repo_rv_item, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -25,7 +27,7 @@ class ReposListAdapter : ListAdapter<Repo, ReposListAdapter.Holder>(ItemCallback
             tvName.text = item.name
             tvStarsgazer.text = item.stargazersCount.toString()
             itemView.setOnClickListener { onClickSubject.onNext(getItem(holder.adapterPosition)) }
-            ivStar.visibility = if(item.bookmark) View.VISIBLE else View.GONE
+            ivStar.visibility = if (item.bookmark) View.VISIBLE else View.GONE
         }
     }
 

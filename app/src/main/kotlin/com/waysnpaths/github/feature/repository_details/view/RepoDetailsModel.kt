@@ -1,6 +1,6 @@
-package com.waysnpaths.github.ui.view.repoDetails
+package com.waysnpaths.github.feature.repository_details.view
 
-import com.waysnpaths.github.domain.model.Stargazer
+import com.waysnpaths.github.feature.repository_details.domain.Stargazer
 
 
 data class RepoDetailsModel(

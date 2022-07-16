@@ -1,4 +1,4 @@
-package com.waysnpaths.github.data.database.bookmark
+package com.waysnpaths.github.feature.repository_details.data.bookmark
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

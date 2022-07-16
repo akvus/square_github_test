@@ -1,4 +1,4 @@
-package com.waysnpaths.github.data.remote.repo
+package com.waysnpaths.github.feature.repository_list.data.repo
 
 import com.google.gson.annotations.SerializedName
 
