@@ -17,9 +17,9 @@ class MyApplication : MultiDexApplication() {
         super.onCreate()
 
         Timber.plant(Timber.DebugTree())
+
         startKoin {
             androidContext(this@MyApplication)
-
             modules(
                 appModule, mainModule, repositoryDetailsModule, repositoryListModule,
                 remoteModule, dbModule

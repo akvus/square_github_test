@@ -5,6 +5,7 @@ import com.waysnpaths.github.common.data.database.MyDatabaseFactory
 import com.waysnpaths.github.feature.repository_details.data.bookmark.DbBookmarkRepository
 import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkEntityMapper
 import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkMapper
+import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 
@@ -21,5 +22,5 @@ val dbModule = module {
         db.bookmarkDao()
     }
 
-    factory { DbBookmarkRepository(get(), get(), get()) }
+    factory<BookmarkRepository> { DbBookmarkRepository(get(), get(), get()) }
 }
