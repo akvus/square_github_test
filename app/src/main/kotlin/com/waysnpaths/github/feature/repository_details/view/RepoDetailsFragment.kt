@@ -53,7 +53,7 @@ class RepoDetailsFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        viewModel.getModel().observe(this, Observer(::render))
+        viewModel.getModel().observe(viewLifecycleOwner, Observer(::render))
     }
 
     private fun render(model: RepoDetailsModel) {
