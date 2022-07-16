@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.waysnpaths.github.R
+import com.waysnpaths.github.databinding.ReposDetailsFragmentBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RepoDetailsFragment : Fragment() {
 
@@ -15,12 +16,16 @@ class RepoDetailsFragment : Fragment() {
 
     private var stargazersAdapter: StargazersAdapter? = null
 
+    private var _binding: ReposDetailsFragmentBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.repos_details_fragment, container, false)
+    ): View {
+        _binding = ReposDetailsFragmentBinding.inflate(inflater, container, false)
+        return  binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,12 +44,12 @@ class RepoDetailsFragment : Fragment() {
 
     private fun setUpView() {
         stargazersAdapter = StargazersAdapter()
-        rvStargazers.apply {
+        binding.rvStargazers.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = stargazersAdapter
         }
-        btnBookmark.setOnClickListener { viewModel.onBookmark(getRepoName()) }
-        btnRemoveBookmark.setOnClickListener { viewModel.onRemoveBookmark(getRepoName()) }
+        binding.btnBookmark.setOnClickListener { viewModel.onBookmark(getRepoName()) }
+        binding.btnRemoveBookmark.setOnClickListener { viewModel.onRemoveBookmark(getRepoName()) }
     }
 
     private fun initViewModel() {
@@ -55,11 +60,11 @@ class RepoDetailsFragment : Fragment() {
         stargazersAdapter?.submitList(model.stargazers)
 
         if (model.bookmarked) {
-            btnBookmark.visibility = View.GONE
-            btnRemoveBookmark.visibility = View.VISIBLE
+            binding.btnBookmark.visibility = View.GONE
+            binding.btnRemoveBookmark.visibility = View.VISIBLE
         } else {
-            btnBookmark.visibility = View.VISIBLE
-            btnRemoveBookmark.visibility = View.GONE
+            binding.btnBookmark.visibility = View.VISIBLE
+            binding.btnRemoveBookmark.visibility = View.GONE
         }
     }
 

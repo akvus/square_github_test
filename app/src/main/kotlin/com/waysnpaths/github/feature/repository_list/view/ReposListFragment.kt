@@ -8,9 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.waysnpaths.github.R
 import com.waysnpaths.github.common.view.util.plusAssign
+import com.waysnpaths.github.databinding.ReposListFragmentBinding
 import io.reactivex.disposables.CompositeDisposable
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 // todo maybe creating VM, init VM and rendering model could be abstracted
 class ReposListFragment : Fragment() {
@@ -20,12 +21,16 @@ class ReposListFragment : Fragment() {
 
     private var reposAdapter: ReposListAdapter? = null
 
+    private var _binding: ReposListFragmentBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.repos_list_fragment, container, false)
+    ): View {
+        _binding = ReposListFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,8 +46,8 @@ class ReposListFragment : Fragment() {
     private fun setUpView() {
         reposAdapter = ReposListAdapter()
         disposables += reposAdapter?.onClickSubject?.subscribe { viewModel.routeToDetails(it) }
-        rvRepos.layoutManager = LinearLayoutManager(context)
-        rvRepos.adapter = reposAdapter
+        binding.rvRepos.layoutManager = LinearLayoutManager(context)
+        binding.rvRepos.adapter = reposAdapter
     }
 
     private fun initViewModel() {
@@ -57,7 +62,7 @@ class ReposListFragment : Fragment() {
     }
 
     private fun snack(text: String) {
-        Snackbar.make(rootView, text, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(binding.rootView, text, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onDestroyView() {
