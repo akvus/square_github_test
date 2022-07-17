@@ -2,13 +2,11 @@ package com.waysnpaths.github.feature.repository_details.data.bookmark
 
 import android.content.Context
 import androidx.room.Room
-import com.waysnpaths.github.MyContract
+import com.waysnpaths.github.Constants
 
 object MyDatabaseFactory {
-    fun make(context: Context): MyDatabase {
-        return Room.databaseBuilder(
-            context,
-            MyDatabase::class.java, MyContract.databaseName
-        ).build()
-    }
+    fun make(context: Context): MyDatabase = Room.databaseBuilder(
+        context,
+        MyDatabase::class.java, Constants.databaseName
+    ).build()
 }

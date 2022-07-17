@@ -3,7 +3,6 @@ package com.waysnpaths.github.feature.main.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.waysnpaths.github.R
 import com.waysnpaths.github.common.routing.ReposListRoute
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -1,8 +1,5 @@
 package com.waysnpaths.github.feature.repository_details.data.bookmark
 
-import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkDao
-import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkEntityMapper
-import com.waysnpaths.github.feature.repository_details.data.bookmark.BookmarkMapper
 import com.waysnpaths.github.feature.repository_details.domain.Bookmark
 import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
 import io.reactivex.Completable
@@ -13,10 +10,8 @@ class DbBookmarkRepository(
     private val bookmarkMapper: BookmarkMapper,
     private val bookmarkEntityMapper: BookmarkEntityMapper
 ) : BookmarkRepository {
-    override fun get(repoName: String): Maybe<Bookmark> {
-        return bookmarkDao.get(repoName)
-            .map { bookmarkMapper.map(it) }
-    }
+    override fun get(repoName: String): Maybe<Bookmark> = bookmarkDao.get(repoName)
+        .map { bookmarkMapper.map(it) }
 
     override fun add(repoName: Bookmark): Completable {
         // todo this is done due to when I tried Dao to return Completable build was failing in generated code

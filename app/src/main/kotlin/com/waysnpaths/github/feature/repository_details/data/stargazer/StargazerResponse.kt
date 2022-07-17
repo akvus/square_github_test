@@ -1,12 +1,11 @@
-package com.waysnpaths.github.data.remote.stargazer
+package com.waysnpaths.github.feature.repository_details.data.stargazer
 
 import com.google.gson.annotations.SerializedName
 
 class StargazerResponse {
     @SerializedName("login")
-    var login: String = ""
+    val login: String = ""
 
     @SerializedName("avatar_url")
-    var avatarUrl: String = ""
-
+    val avatarUrl: String = ""
 }

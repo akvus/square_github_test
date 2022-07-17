@@ -11,7 +11,6 @@ import com.waysnpaths.github.feature.repository_details.domain.Bookmark
 import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
@@ -26,7 +25,7 @@ class GithubRepositoryListViewModel(
             .toObservable()
             .flatMapIterable { it }
             .flatMap { repo -> matchRepoWithBookmark(repo) }
-            .map { it -> it.first.apply { bookmark = it.second?.repoName?.isNotEmpty() == true } }
+            .map { it.first.copy (bookmark = it.second?.githubRepositoryName?.isNotEmpty() == true) }
             .toList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

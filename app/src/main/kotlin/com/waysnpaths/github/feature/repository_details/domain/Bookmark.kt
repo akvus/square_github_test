@@ -1,3 +1,3 @@
 package com.waysnpaths.github.feature.repository_details.domain
 
-data class Bookmark(var repoName: String)
+data class Bookmark(val githubRepositoryName: String)

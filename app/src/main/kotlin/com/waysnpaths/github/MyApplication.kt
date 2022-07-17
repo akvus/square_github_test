@@ -18,7 +18,9 @@ class MyApplication : MultiDexApplication() {
         startKoin {
             androidContext(this@MyApplication)
             modules(
-                appModule, mainModule, repositoryDetailsModule, githubRepositoryListModule
+                appModule, mainModule,
+                repositoryDetailsModule,
+                githubRepositoryListModule
             )
         }
     }

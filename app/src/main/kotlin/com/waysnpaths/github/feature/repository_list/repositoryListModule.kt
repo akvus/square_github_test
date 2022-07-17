@@ -1,7 +1,7 @@
 package com.waysnpaths.github.feature.repository_list
 
 import com.waysnpaths.github.feature.repository_list.data.SquareGithubFactory
-import com.waysnpaths.github.data.remote.stargazer.StargazerMapper
+import com.waysnpaths.github.feature.repository_details.data.stargazer.StargazerMapper
 import com.waysnpaths.github.feature.repository_details.data.stargazer.RemoteStargazerRepository
 import com.waysnpaths.github.feature.repository_details.domain.StargazerRepository
 import com.waysnpaths.github.feature.repository_list.data.RemoteGithubRepositoryRepository

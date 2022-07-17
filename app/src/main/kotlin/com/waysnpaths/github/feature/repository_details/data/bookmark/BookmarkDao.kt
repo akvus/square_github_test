@@ -8,8 +8,8 @@ import io.reactivex.Maybe
 
 @Dao
 interface BookmarkDao {
-    @Query("SELECT * FROM bookmarkEntity WHERE repoName=:repoName")
-    fun get(repoName: String): Maybe<BookmarkEntity?>
+    @Query("SELECT * FROM bookmarkEntity WHERE githubRepositoryName=:githubRepositoryName")
+    fun get(githubRepositoryName: String): Maybe<BookmarkEntity?>
 
     @Insert
     fun insert(bookmark: BookmarkEntity)

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class BookmarkEntity(
-    @PrimaryKey()
-    @ColumnInfo(name = "repoName")
-    var repoName: String = ""
+    @PrimaryKey
+    @ColumnInfo(name = "githubRepositoryName")
+    var githubRepositoryName: String = ""
 )
