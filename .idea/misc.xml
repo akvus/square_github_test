@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/conta/dev/square_github_test/app/src/main/res/layout/repo_rv_item.xml" value="0.4" />
         <entry key="..\:/Users/conta/dev/square_github_test/app/src/main/res/layout/repos_details_fragment.xml" value="0.4" />
+        <entry key="..\:/Users/conta/dev/square_github_test/app/src/main/res/layout/repos_list_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/conta/dev/square_github_test/app/src/main/res/layout/stargazer_rv_item.xml" value="0.4" />
       </map>
     </option>
   </component>

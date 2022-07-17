@@ -4,72 +4,74 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.Dp
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
-import com.waysnpaths.github.common.extension.plusAssign
-import com.waysnpaths.github.databinding.ReposListFragmentBinding
-import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-// todo maybe creating VM, init VM and rendering model could be abstracted
 class GithubRepositoryListFragment : Fragment() {
-    private var disposables = CompositeDisposable()
-
     private val viewModel: GithubRepositoryListViewModel by viewModel()
-
-    private var reposAdapter: GithubRepositoryListAdapter? = null
-
-    private var _binding: ReposListFragmentBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = ReposListFragmentBinding.inflate(inflater, container, false)
-        return binding.root
+    ): View = ComposeView(requireContext()).apply {
+        setContent { GithubRepositoryList(viewModel) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpView()
-        initViewModel()
         if (savedInstanceState == null)
             viewModel.loadRepos()
     }
-
-    private fun setUpView() {
-        reposAdapter = GithubRepositoryListAdapter()
-        disposables += reposAdapter?.onClickSubject?.subscribe { viewModel.routeToDetails(it) }
-        binding.rvRepos.layoutManager = LinearLayoutManager(context)
-        binding.rvRepos.adapter = reposAdapter
-    }
-
-    private fun initViewModel() {
-        viewModel.getModel().observe(viewLifecycleOwner, Observer(::render))
-    }
-
-    private fun render(model: GithubRepositoryListModel) {
-        reposAdapter?.submitList(model.githubRepositories)
-        model.message?.let {
-            it.getContentIfNotHandled()?.let { snack(it) }
-        }
-    }
-
-    private fun snack(text: String) {
-        Snackbar.make(binding.rootView, text, Snackbar.LENGTH_LONG).show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        disposables.clear()
-    }
-
     companion object {
         fun newInstance() = GithubRepositoryListFragment()
+    }
+}
+
+@Composable
+private fun GithubRepositoryList(viewModel: GithubRepositoryListViewModel) {
+    val model by viewModel.getModel().observeAsState()
+    val image: Painter = painterResource(id = android.R.drawable.star_on)
+    val message = model?.message?.getContentIfNotHandled()
+
+    LazyColumn(
+        contentPadding = PaddingValues(all = Dp(16f))
+    ) {
+        // TODO proper viewState handle (error, loading, data, empty)
+        if (message != null)
+            item { Text(message, color = Color.Red) }
+
+        items(model?.githubRepositories ?: listOf()) { repository ->
+            Row(
+                modifier = Modifier
+                    .clickable {
+                        viewModel.routeToDetails(repository)
+                    }
+                    .fillMaxWidth()
+                    .padding(Dp(16f)),
+                horizontalArrangement = Arrangement.spacedBy(Dp(8f))
+            ) {
+                Text(text = repository.name)
+                Text(text = repository.stargazersCount.toString())
+                if (repository.bookmark)
+                    Image(painter = image, contentDescription = "Bookmarked")
+            }
+        }
     }
 }
