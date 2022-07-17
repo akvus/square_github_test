@@ -26,7 +26,7 @@ class ReposListAdapter : ListAdapter<Repo, ReposListAdapter.Holder>(ItemCallback
         holder.apply {
             tvName.text = item.name
             tvStarsgazer.text = item.stargazersCount.toString()
-            itemView.setOnClickListener { onClickSubject.onNext(getItem(holder.adapterPosition)) }
+            itemView.setOnClickListener { onClickSubject.onNext(getItem(holder.bindingAdapterPosition)) }
             ivStar.visibility = if (item.bookmark) View.VISIBLE else View.GONE
         }
     }

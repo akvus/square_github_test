@@ -30,7 +30,6 @@ class RepoDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        retainInstance = true
 
         setUpView()
         initViewModel()
