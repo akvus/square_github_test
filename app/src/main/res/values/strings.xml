@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">github_api_test</string>
+    <string name="app_name">Dummy test app</string>
     <string name="bookmark">Bookmark</string>
     <string name="remove_bookmark">Remove from bookmark</string>
 </resources>

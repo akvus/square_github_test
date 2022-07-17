@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 class GithubRepositoryResponse {
     @SerializedName("name")
-    var name: String = ""
+    val name: String = ""
 
     @SerializedName("stargazers_count")
-    var stargazersCount: Int = 0
+    val stargazersCount: Int = 0
 }

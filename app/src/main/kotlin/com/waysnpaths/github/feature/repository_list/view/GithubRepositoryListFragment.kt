@@ -18,7 +18,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -67,7 +69,7 @@ private fun GithubRepositoryList(viewModel: GithubRepositoryListViewModel) {
                     .padding(Dp(16f)),
                 horizontalArrangement = Arrangement.spacedBy(Dp(8f))
             ) {
-                Text(text = repository.name)
+                Text(text = repository.name.capitalize())
                 Text(text = repository.stargazersCount.toString())
                 if (repository.bookmark)
                     Image(painter = image, contentDescription = "Bookmarked")
