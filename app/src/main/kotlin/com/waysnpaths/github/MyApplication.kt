@@ -1,7 +1,6 @@
 package com.waysnpaths.github
 
 import androidx.multidex.MultiDexApplication
-import com.waysnpaths.github.common.layer.view.serviceLocator.appModule
 import com.waysnpaths.github.common.layer.view.serviceLocator.dbModule
 import com.waysnpaths.github.common.layer.view.serviceLocator.remoteModule
 import com.waysnpaths.github.feature.main.mainModule

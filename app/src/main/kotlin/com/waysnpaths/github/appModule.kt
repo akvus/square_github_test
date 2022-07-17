@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.layer.view.serviceLocator
+package com.waysnpaths.github
 
 import com.waysnpaths.github.common.routing.Router
 import org.koin.dsl.module

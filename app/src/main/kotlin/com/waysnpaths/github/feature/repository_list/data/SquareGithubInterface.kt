@@ -1,6 +1,5 @@
 package com.waysnpaths.github.feature.repository_list.data
 
-import com.waysnpaths.github.feature.repository_list.data.RepoResponse
 import com.waysnpaths.github.data.remote.stargazer.StargazerResponse
 import io.reactivex.Single
 import retrofit2.http.GET
