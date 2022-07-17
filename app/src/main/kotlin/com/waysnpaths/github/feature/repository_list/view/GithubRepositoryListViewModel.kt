@@ -36,8 +36,8 @@ class GithubRepositoryListViewModel(
     private fun matchRepoWithBookmark(githubRepository: GithubRepository): Observable<Pair<GithubRepository, Bookmark?>>? {
         return Observable.zip(
             Observable.just(githubRepository),
-            bookmarkRepository.get(githubRepository.name).defaultIfEmpty(Bookmark("")).toObservable(),
-            BiFunction<GithubRepository, Bookmark, Pair<GithubRepository, Bookmark?>> { t1, t2 -> t1 to t2 })
+            bookmarkRepository.get(githubRepository.name).defaultIfEmpty(Bookmark("")).toObservable()
+        ) { t1, t2 -> t1 to t2 }
     }
 
     private fun onReposRetrieved(githubRepositories: List<GithubRepository>) {

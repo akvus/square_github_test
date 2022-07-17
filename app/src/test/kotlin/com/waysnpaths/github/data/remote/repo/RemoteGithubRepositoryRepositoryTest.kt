@@ -1,5 +1,6 @@
 package com.waysnpaths.github.data.remote.repo
 
+import android.annotation.SuppressLint
 import com.waysnpaths.github.feature.repository_list.data.SquareGithubInterface
 import com.waysnpaths.github.feature.repository_list.domain.GithubRepository
 import com.waysnpaths.github.feature.repository_list.data.RemoteGithubRepositoryRepository
@@ -40,6 +41,7 @@ class RemoteGithubRepositoryRepositoryTest {
         remoteRepoRepository = RemoteGithubRepositoryRepository(squareGitHubInterface, githubRepositoryMapper)
     }
 
+    @SuppressLint("CheckResult")
     @Test
     fun `get() with successful response`() {
         `when`(squareGitHubInterface.getRepos()).thenReturn(Single.just(githubRepositoryRespons))
@@ -51,6 +53,7 @@ class RemoteGithubRepositoryRepositoryTest {
         testObserver.assertValue(githubRepositories)
     }
 
+    @SuppressLint("CheckResult")
     @Test
     fun `get() with error`() {
         val exception = Exception("Error")
