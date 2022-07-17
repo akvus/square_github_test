@@ -5,12 +5,12 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 33
     defaultConfig {
-        multiDexEnabled true
         applicationId "com.waysnpaths.github_api_test"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
