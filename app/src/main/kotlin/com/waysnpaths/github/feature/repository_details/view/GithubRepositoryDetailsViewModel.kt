@@ -23,15 +23,15 @@ class GithubRepositoryDetailsViewModel(
         disposables += bookmarkRepository.get(repoName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ bookmarkFound(true) }, { bookmarkFound(false) })
+            .subscribe({ onBookmarkedStatusFound(true) }, { onBookmarkedStatusFound(false) })
     }
 
-    private fun bookmarkFound(bookmark: Boolean) {
-        modelLiveData.value = modelLiveData.value?.copy(bookmarked = bookmark)
+    private fun onBookmarkedStatusFound(isBookmarked: Boolean) {
+        modelLiveData.value = modelLiveData.value?.copy(bookmarked = isBookmarked)
     }
 
-    fun loadStargazers(repoName: String) {
-        disposables += stargazerRepository.get(repoName)
+    fun loadStargazers(githubRepositoryName: String) {
+        disposables += stargazerRepository.get(githubRepositoryName)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(::onStargazersReceived, ::onError)
@@ -46,17 +46,14 @@ class GithubRepositoryDetailsViewModel(
         // todo notify
     }
 
-    fun onBookmark(repoName: String) {
-        disposables += bookmarkRepository.add(Bookmark(repoName))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ checkBookmark(repoName) }, ::onError)
-    }
+    fun onChangeBookmarking(githubRepositoryName: String) {
+        val completable = if (modelLiveData.value!!.bookmarked) {
+            bookmarkRepository.add(Bookmark(githubRepositoryName))
+        } else bookmarkRepository.delete(Bookmark(githubRepositoryName))
 
-    fun onRemoveBookmark(repoName: String) {
-        disposables += bookmarkRepository.delete(Bookmark(repoName))
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ checkBookmark(repoName) }, ::onError)
+        disposables +=
+            completable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ checkBookmark(githubRepositoryName) }, ::onError)
     }
 }

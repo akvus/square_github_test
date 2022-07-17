@@ -67,10 +67,10 @@ private fun GithubRepositoryDetails(viewModel: GithubRepositoryDetailsViewModel,
     ) {
         item {
             Button(onClick = {
-                viewModel.onBookmark(repositoryName)
+                viewModel.onChangeBookmarking(repositoryName)
                 // TODO there is also onRemoveBookmark - > make both be one
             }) {
-                Text(if (isBookmarked) "Bookmark" else "Remove bookmark")
+                Text(if (isBookmarked) "Remove bookmark" else "Bookmark")
             }
         }
 
