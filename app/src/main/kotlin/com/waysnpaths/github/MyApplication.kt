@@ -1,8 +1,6 @@
 package com.waysnpaths.github
 
 import androidx.multidex.MultiDexApplication
-import com.waysnpaths.github.common.layer.view.serviceLocator.dbModule
-import com.waysnpaths.github.common.layer.view.serviceLocator.remoteModule
 import com.waysnpaths.github.feature.main.mainModule
 import com.waysnpaths.github.feature.repository_details.repositoryDetailsModule
 import com.waysnpaths.github.feature.repository_list.repositoryListModule
@@ -20,8 +18,7 @@ class MyApplication : MultiDexApplication() {
         startKoin {
             androidContext(this@MyApplication)
             modules(
-                appModule, mainModule, repositoryDetailsModule, repositoryListModule,
-                remoteModule, dbModule
+                appModule, mainModule, repositoryDetailsModule, repositoryListModule
             )
         }
     }
