@@ -41,6 +41,7 @@ class GithubRepositoryListFragment : Fragment() {
         if (savedInstanceState == null)
             viewModel.loadRepos()
     }
+
     companion object {
         fun newInstance() = GithubRepositoryListFragment()
     }
@@ -53,7 +54,7 @@ private fun GithubRepositoryList(viewModel: GithubRepositoryListViewModel) {
     val message = model?.message?.getContentIfNotHandled()
 
     LazyColumn(
-        contentPadding = PaddingValues(all = Dp(16f))
+        contentPadding = PaddingValues(16.dp)
     ) {
         // TODO proper viewState handle (error, loading, data, empty)
         if (message != null)
@@ -66,8 +67,8 @@ private fun GithubRepositoryList(viewModel: GithubRepositoryListViewModel) {
                         viewModel.routeToDetails(repository)
                     }
                     .fillMaxWidth()
-                    .padding(Dp(16f)),
-                horizontalArrangement = Arrangement.spacedBy(Dp(8f))
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(text = repository.name.capitalize())
                 Text(text = repository.stargazersCount.toString())

@@ -4,34 +4,36 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.waysnpaths.github.databinding.ReposDetailsFragmentBinding
+import coil.compose.rememberAsyncImagePainter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GithubRepositoryDetailsFragment : Fragment() {
     private val viewModel: GithubRepositoryDetailsViewModel by viewModel()
 
-    private var stargazersAdapter: StargazersAdapter? = null
-
-    private var _binding: ReposDetailsFragmentBinding? = null
-    private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = ReposDetailsFragmentBinding.inflate(inflater, container, false)
-        return  binding.root
+    ): View = ComposeView(requireContext()).apply {
+        setContent { GithubRepositoryDetails(viewModel, getRepoName()) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpView()
-        initViewModel()
         if (savedInstanceState == null) {
             with(getRepoName()) {
                 viewModel.loadStargazers(this)
@@ -40,39 +42,51 @@ class GithubRepositoryDetailsFragment : Fragment() {
         }
     }
 
-    private fun setUpView() {
-        stargazersAdapter = StargazersAdapter()
-        binding.rvStargazers.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = stargazersAdapter
-        }
-        binding.btnBookmark.setOnClickListener { viewModel.onBookmark(getRepoName()) }
-        binding.btnRemoveBookmark.setOnClickListener { viewModel.onRemoveBookmark(getRepoName()) }
-    }
-
-    private fun initViewModel() {
-        viewModel.getModel().observe(viewLifecycleOwner, Observer(::render))
-    }
-
-    private fun render(model: GithubRepositoryDetailsModel) {
-        stargazersAdapter?.submitList(model.stargazers)
-
-        if (model.bookmarked) {
-            binding.btnBookmark.visibility = View.GONE
-            binding.btnRemoveBookmark.visibility = View.VISIBLE
-        } else {
-            binding.btnBookmark.visibility = View.VISIBLE
-            binding.btnRemoveBookmark.visibility = View.GONE
-        }
-    }
-
     private fun getRepoName(): String = arguments!!.getString(nameArgument)!! // crash otherwise
 
     companion object {
         private const val nameArgument = "name"
+
         fun newInstance(repoName: String) = GithubRepositoryDetailsFragment().apply {
             arguments = Bundle().apply {
                 putString(nameArgument, repoName)
+            }
+        }
+    }
+}
+
+
+@Composable
+private fun GithubRepositoryDetails(viewModel: GithubRepositoryDetailsViewModel,  repositoryName:String) {
+    val model by viewModel.getModel().observeAsState()
+    val isBookmarked = model?.bookmarked ?: false;
+    val stargazers = model?.stargazers ?: listOf()
+
+    LazyColumn(
+        contentPadding = PaddingValues(16.dp)
+    ) {
+        item {
+            Button(onClick = {
+                viewModel.onBookmark(repositoryName)
+                // TODO there is also onRemoveBookmark - > make both be one
+            }) {
+                Text(if (isBookmarked) "Bookmark" else "Remove bookmark")
+            }
+        }
+
+        items(stargazers) { stargazer ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Image(
+                    painter = rememberAsyncImagePainter(stargazer.avatarUrl),
+                    contentDescription = null,
+                    modifier = Modifier.size(64.dp)
+                )
+                Text(stargazer.username)
             }
         }
     }
