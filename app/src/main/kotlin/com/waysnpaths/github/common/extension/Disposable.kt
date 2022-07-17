@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.view.util
+package com.waysnpaths.github.common.extension
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

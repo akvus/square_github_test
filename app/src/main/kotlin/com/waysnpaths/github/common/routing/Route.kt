@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.view.routing
+package com.waysnpaths.github.common.routing
 
 import androidx.fragment.app.Fragment
 import com.waysnpaths.github.feature.repository_details.view.RepoDetailsFragment

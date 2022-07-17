@@ -1,10 +1,10 @@
 package com.waysnpaths.github.feature.repository_list.view
 
-import com.waysnpaths.github.common.view.Event
-import com.waysnpaths.github.common.view.MyViewModel
-import com.waysnpaths.github.common.view.routing.RepoDetailsRoute
-import com.waysnpaths.github.common.view.routing.Router
-import com.waysnpaths.github.common.view.util.plusAssign
+import com.waysnpaths.github.common.layer.view.Event
+import com.waysnpaths.github.common.layer.view.MyViewModel
+import com.waysnpaths.github.common.routing.RepoDetailsRoute
+import com.waysnpaths.github.common.routing.Router
+import com.waysnpaths.github.common.extension.plusAssign
 import com.waysnpaths.github.feature.repository_list.domain.Repo
 import com.waysnpaths.github.feature.repository_list.domain.RepoRepository
 import com.waysnpaths.github.feature.repository_details.domain.Bookmark

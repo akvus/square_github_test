@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.view
+package com.waysnpaths.github.common.layer.view
 
 /**
  * Credits: https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150

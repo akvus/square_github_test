@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.view
+package com.waysnpaths.github.common.layer.view
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

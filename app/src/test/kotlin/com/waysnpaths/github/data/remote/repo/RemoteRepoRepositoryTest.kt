@@ -1,10 +1,10 @@
 package com.waysnpaths.github.data.remote.repo
 
-import com.waysnpaths.github.common.data.remote.SuqareGithubInterface
+import com.waysnpaths.github.feature.repository_list.data.SquareGithubInterface
 import com.waysnpaths.github.feature.repository_list.domain.Repo
-import com.waysnpaths.github.feature.repository_list.data.repo.RemoteRepoRepository
-import com.waysnpaths.github.feature.repository_list.data.repo.RepoMapper
-import com.waysnpaths.github.feature.repository_list.data.repo.RepoResponse
+import com.waysnpaths.github.feature.repository_list.data.RemoteRepoRepository
+import com.waysnpaths.github.feature.repository_list.data.RepoMapper
+import com.waysnpaths.github.feature.repository_list.data.RepoResponse
 import io.reactivex.Single
 import io.reactivex.observers.TestObserver
 import org.junit.Before
@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner
 class RemoteRepoRepositoryTest {
 
     @Mock
-    lateinit var squareGitHubInterface: SuqareGithubInterface
+    lateinit var squareGitHubInterface: SquareGithubInterface
 
     @Mock
     lateinit var repoMapper: RepoMapper

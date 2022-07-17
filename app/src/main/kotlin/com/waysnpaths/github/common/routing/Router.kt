@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.view.routing
+package com.waysnpaths.github.common.routing
 
 import io.reactivex.subjects.BehaviorSubject
 

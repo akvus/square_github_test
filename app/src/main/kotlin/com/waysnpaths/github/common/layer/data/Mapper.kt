@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.data
+package com.waysnpaths.github.common.layer.data
 
 interface Mapper<From, To> {
     fun map(from: From): To

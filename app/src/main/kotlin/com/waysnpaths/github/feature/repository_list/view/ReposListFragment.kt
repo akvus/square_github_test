@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.waysnpaths.github.common.view.util.plusAssign
+import com.waysnpaths.github.common.extension.plusAssign
 import com.waysnpaths.github.databinding.ReposListFragmentBinding
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel

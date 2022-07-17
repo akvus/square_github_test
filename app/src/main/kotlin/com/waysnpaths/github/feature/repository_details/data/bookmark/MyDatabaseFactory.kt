@@ -1,4 +1,4 @@
-package com.waysnpaths.github.common.data.database
+package com.waysnpaths.github.feature.repository_details.data.bookmark
 
 import android.content.Context
 import androidx.room.Room

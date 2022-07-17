@@ -1,6 +1,6 @@
 package com.waysnpaths.github.feature.repository_list.view
 
-import com.waysnpaths.github.common.view.Event
+import com.waysnpaths.github.common.layer.view.Event
 import com.waysnpaths.github.feature.repository_list.domain.Repo
 
 data class ReposListModel(

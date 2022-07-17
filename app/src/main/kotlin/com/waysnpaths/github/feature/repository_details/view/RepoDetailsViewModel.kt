@@ -1,7 +1,7 @@
 package com.waysnpaths.github.feature.repository_details.view
 
-import com.waysnpaths.github.common.view.MyViewModel
-import com.waysnpaths.github.common.view.util.plusAssign
+import com.waysnpaths.github.common.layer.view.MyViewModel
+import com.waysnpaths.github.common.extension.plusAssign
 import com.waysnpaths.github.feature.repository_details.domain.Bookmark
 import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
 import com.waysnpaths.github.feature.repository_details.domain.Stargazer
