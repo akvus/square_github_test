@@ -61,6 +61,8 @@ dependencies {
     // When using a AppCompat theme
     implementation "com.google.accompanist:accompanist-appcompat-theme:0.16.0"
 
+    implementation 'androidx.compose.runtime:runtime-livedata:1.1.1'
+
     implementation 'com.android.support:multidex:1.0.3'
 
     implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
