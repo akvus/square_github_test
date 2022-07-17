@@ -11,7 +11,6 @@ import com.waysnpaths.github.databinding.ReposDetailsFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GithubRepositoryDetailsFragment : Fragment() {
-
     private val viewModel: GithubRepositoryDetailsViewModel by viewModel()
 
     private var stargazersAdapter: StargazersAdapter? = null

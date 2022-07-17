@@ -8,8 +8,6 @@ class RemoteGithubRepositoryRepository(
     private val squareGithubInterface: SquareGithubInterface,
     private val githubRepositoryMapper: GithubRepositoryMapper
 ) : GithubRepositoryRepository {
-    override fun get(): Single<List<GithubRepository>> {
-        return squareGithubInterface.getRepos()
-            .map { repo -> githubRepositoryMapper.mapList(repo) }
-    }
+    override fun get(): Single<List<GithubRepository>> = squareGithubInterface.getRepos()
+        .map { repo -> githubRepositoryMapper.mapList(repo) }
 }
