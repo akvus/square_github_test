@@ -3,7 +3,7 @@ package com.waysnpaths.github
 import androidx.multidex.MultiDexApplication
 import com.waysnpaths.github.feature.main.mainModule
 import com.waysnpaths.github.feature.repository_details.repositoryDetailsModule
-import com.waysnpaths.github.feature.repository_list.repositoryListModule
+import com.waysnpaths.github.feature.repository_list.githubRepositoryListModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -18,7 +18,7 @@ class MyApplication : MultiDexApplication() {
         startKoin {
             androidContext(this@MyApplication)
             modules(
-                appModule, mainModule, repositoryDetailsModule, repositoryListModule
+                appModule, mainModule, repositoryDetailsModule, githubRepositoryListModule
             )
         }
     }

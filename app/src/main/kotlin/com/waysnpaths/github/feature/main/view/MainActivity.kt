@@ -23,10 +23,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel.getModel().observe(this, Observer { model ->
-            render(model)
-        })
-        viewModel.onInit()
+        with(viewModel) {
+            getModel().observe(this@MainActivity) { model ->
+                render(model)
+            }
+            onInit()
+        }
     }
 
     private fun render(model: MainModel) {

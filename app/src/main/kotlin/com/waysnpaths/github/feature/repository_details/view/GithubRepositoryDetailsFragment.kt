@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.waysnpaths.github.databinding.ReposDetailsFragmentBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RepoDetailsFragment : Fragment() {
+class GithubRepositoryDetailsFragment : Fragment() {
 
-    private val viewModel: RepoDetailsViewModel by viewModel()
+    private val viewModel: GithubRepositoryDetailsViewModel by viewModel()
 
     private var stargazersAdapter: StargazersAdapter? = null
 
@@ -55,7 +55,7 @@ class RepoDetailsFragment : Fragment() {
         viewModel.getModel().observe(viewLifecycleOwner, Observer(::render))
     }
 
-    private fun render(model: RepoDetailsModel) {
+    private fun render(model: GithubRepositoryDetailsModel) {
         stargazersAdapter?.submitList(model.stargazers)
 
         if (model.bookmarked) {
@@ -73,7 +73,7 @@ class RepoDetailsFragment : Fragment() {
 
     companion object {
         private const val nameArgument = "name"
-        fun newInstance(repoName: String) = RepoDetailsFragment().apply {
+        fun newInstance(repoName: String) = GithubRepositoryDetailsFragment().apply {
             arguments = Bundle().apply {
                 putString(nameArgument, repoName)
             }

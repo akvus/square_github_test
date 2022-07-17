@@ -11,13 +11,13 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
 // todo caching the result
-class RepoDetailsViewModel(
+class GithubRepositoryDetailsViewModel(
     private val stargazerRepository: StargazerRepository,
     private val bookmarkRepository: BookmarkRepository
-) : MyViewModel<RepoDetailsModel>() {
+) : MyViewModel<GithubRepositoryDetailsModel>() {
 
     init {
-        modelLiveData.value = RepoDetailsModel(listOf(), false)
+        modelLiveData.value = GithubRepositoryDetailsModel(listOf(), false)
     }
 
     fun checkBookmark(repoName: String) {

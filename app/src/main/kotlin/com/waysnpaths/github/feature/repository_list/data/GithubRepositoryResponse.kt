@@ -2,7 +2,7 @@ package com.waysnpaths.github.feature.repository_list.data
 
 import com.google.gson.annotations.SerializedName
 
-class RepoResponse {
+class GithubRepositoryResponse {
     @SerializedName("name")
     var name: String = ""
 

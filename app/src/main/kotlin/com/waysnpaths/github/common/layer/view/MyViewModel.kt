@@ -10,9 +10,7 @@ abstract class MyViewModel<Model> : ViewModel() {
 
     protected val modelLiveData by lazy { MutableLiveData<Model>() }
 
-    fun getModel(): LiveData<Model> {
-        return modelLiveData
-    }
+    fun getModel(): LiveData<Model> = modelLiveData
 
     override fun onCleared() {
         disposables.clear()

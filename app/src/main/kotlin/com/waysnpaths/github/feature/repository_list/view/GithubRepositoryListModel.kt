@@ -1,10 +1,10 @@
 package com.waysnpaths.github.feature.repository_list.view
 
 import com.waysnpaths.github.common.layer.view.Event
-import com.waysnpaths.github.feature.repository_list.domain.Repo
+import com.waysnpaths.github.feature.repository_list.domain.GithubRepository
 
-data class ReposListModel(
+data class GithubRepositoryListModel(
     // todo could be some loading/loaded state
-    val repos: List<Repo> = listOf(),
+    val githubRepositories: List<GithubRepository> = listOf(),
     val message: Event<String>? = null
 )

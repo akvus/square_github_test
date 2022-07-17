@@ -5,8 +5,8 @@ import com.waysnpaths.github.common.layer.view.MyViewModel
 import com.waysnpaths.github.common.routing.RepoDetailsRoute
 import com.waysnpaths.github.common.routing.Router
 import com.waysnpaths.github.common.extension.plusAssign
-import com.waysnpaths.github.feature.repository_list.domain.Repo
-import com.waysnpaths.github.feature.repository_list.domain.RepoRepository
+import com.waysnpaths.github.feature.repository_list.domain.GithubRepository
+import com.waysnpaths.github.feature.repository_list.domain.GithubRepositoryRepository
 import com.waysnpaths.github.feature.repository_details.domain.Bookmark
 import com.waysnpaths.github.feature.repository_details.domain.BookmarkRepository
 import io.reactivex.Observable
@@ -15,14 +15,14 @@ import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class ReposListViewModel(
+class GithubRepositoryListViewModel(
     private val routingEvent: Router,
-    private val repoRepository: RepoRepository,
+    private val githubRepositoryRepository: GithubRepositoryRepository,
     private val bookmarkRepository: BookmarkRepository
-) : MyViewModel<ReposListModel>() {
+) : MyViewModel<GithubRepositoryListModel>() {
 
     fun loadRepos() {
-        disposables += repoRepository.get()
+        disposables += githubRepositoryRepository.get()
             .toObservable()
             .flatMapIterable { it }
             .flatMap { repo -> matchRepoWithBookmark(repo) }
@@ -33,26 +33,26 @@ class ReposListViewModel(
             .subscribe(::onReposRetrieved, ::onError)
     }
 
-    private fun matchRepoWithBookmark(repo: Repo): Observable<Pair<Repo, Bookmark?>>? {
+    private fun matchRepoWithBookmark(githubRepository: GithubRepository): Observable<Pair<GithubRepository, Bookmark?>>? {
         return Observable.zip(
-            Observable.just(repo),
-            bookmarkRepository.get(repo.name).defaultIfEmpty(Bookmark("")).toObservable(),
-            BiFunction<Repo, Bookmark, Pair<Repo, Bookmark?>> { t1, t2 -> t1 to t2 })
+            Observable.just(githubRepository),
+            bookmarkRepository.get(githubRepository.name).defaultIfEmpty(Bookmark("")).toObservable(),
+            BiFunction<GithubRepository, Bookmark, Pair<GithubRepository, Bookmark?>> { t1, t2 -> t1 to t2 })
     }
 
-    private fun onReposRetrieved(repos: List<Repo>) {
-        modelLiveData.value = ReposListModel(repos)
+    private fun onReposRetrieved(githubRepositories: List<GithubRepository>) {
+        modelLiveData.value = GithubRepositoryListModel(githubRepositories)
     }
 
     private fun onError(throwable: Throwable) {
         Timber.e(throwable)
         throwable.message?.let {
             modelLiveData.value = modelLiveData.value?.copy(message = Event(it))
-                ?: ReposListModel(message = Event(it))
+                ?: GithubRepositoryListModel(message = Event(it))
         }
     }
 
-    fun routeToDetails(repo: Repo) {
-        routingEvent.routeTo(RepoDetailsRoute(repo.name))
+    fun routeToDetails(githubRepository: GithubRepository) {
+        routingEvent.routeTo(RepoDetailsRoute(githubRepository.name))
     }
 }

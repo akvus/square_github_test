@@ -14,12 +14,12 @@ import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 // todo maybe creating VM, init VM and rendering model could be abstracted
-class ReposListFragment : Fragment() {
+class GithubRepositoryListFragment : Fragment() {
     private var disposables = CompositeDisposable()
 
-    private val viewModel: ReposListViewModel by viewModel()
+    private val viewModel: GithubRepositoryListViewModel by viewModel()
 
-    private var reposAdapter: ReposListAdapter? = null
+    private var reposAdapter: GithubRepositoryListAdapter? = null
 
     private var _binding: ReposListFragmentBinding? = null
     private val binding get() = _binding!!
@@ -43,7 +43,7 @@ class ReposListFragment : Fragment() {
     }
 
     private fun setUpView() {
-        reposAdapter = ReposListAdapter()
+        reposAdapter = GithubRepositoryListAdapter()
         disposables += reposAdapter?.onClickSubject?.subscribe { viewModel.routeToDetails(it) }
         binding.rvRepos.layoutManager = LinearLayoutManager(context)
         binding.rvRepos.adapter = reposAdapter
@@ -53,8 +53,8 @@ class ReposListFragment : Fragment() {
         viewModel.getModel().observe(viewLifecycleOwner, Observer(::render))
     }
 
-    private fun render(model: ReposListModel) {
-        reposAdapter?.submitList(model.repos)
+    private fun render(model: GithubRepositoryListModel) {
+        reposAdapter?.submitList(model.githubRepositories)
         model.message?.let {
             it.getContentIfNotHandled()?.let { snack(it) }
         }
@@ -70,6 +70,6 @@ class ReposListFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = ReposListFragment()
+        fun newInstance() = GithubRepositoryListFragment()
     }
 }
