@@ -15,7 +15,7 @@ val githubRepositoryListModule = module {
     viewModel { GithubRepositoryListViewModel(get(), get(), get()) }
 
     single {
-        SquareGithubFactory.make()
+        SquareGithubFactory.create()
     }
 
     factory { GithubRepositoryMapper() }

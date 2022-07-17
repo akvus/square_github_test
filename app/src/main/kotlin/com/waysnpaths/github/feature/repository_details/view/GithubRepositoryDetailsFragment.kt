@@ -66,9 +66,7 @@ class GithubRepositoryDetailsFragment : Fragment() {
         }
     }
 
-    private fun getRepoName(): String {
-        return arguments!!.getString(nameArgument)!! // crash otherwise
-    }
+    private fun getRepoName(): String = arguments!!.getString(nameArgument)!! // crash otherwise
 
     companion object {
         private const val nameArgument = "name"

@@ -15,7 +15,6 @@ class GithubRepositoryDetailsViewModel(
     private val stargazerRepository: StargazerRepository,
     private val bookmarkRepository: BookmarkRepository
 ) : MyViewModel<GithubRepositoryDetailsModel>() {
-
     init {
         modelLiveData.value = GithubRepositoryDetailsModel(listOf(), false)
     }

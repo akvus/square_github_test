@@ -15,11 +15,9 @@ import io.reactivex.subjects.PublishSubject
 class GithubRepositoryListAdapter : ListAdapter<GithubRepository, GithubRepositoryListAdapter.Holder>(ItemCallback()) {
     val onClickSubject = PublishSubject.create<GithubRepository>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        return Holder(
-            LayoutInflater.from(parent.context).inflate(R.layout.repo_rv_item, parent, false)
-        )
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder = Holder(
+        LayoutInflater.from(parent.context).inflate(R.layout.repo_rv_item, parent, false)
+    )
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = getItem(position)
@@ -38,12 +36,10 @@ class GithubRepositoryListAdapter : ListAdapter<GithubRepository, GithubReposito
     }
 
     class ItemCallback : DiffUtil.ItemCallback<GithubRepository>() {
-        override fun areItemsTheSame(oldItem: GithubRepository, newItem: GithubRepository): Boolean {
-            return oldItem.name == newItem.name
-        }
+        override fun areItemsTheSame(oldItem: GithubRepository, newItem: GithubRepository): Boolean =
+            oldItem.name == newItem.name
 
-        override fun areContentsTheSame(oldItem: GithubRepository, newItem: GithubRepository): Boolean {
-            return oldItem == newItem
-        }
+        override fun areContentsTheSame(oldItem: GithubRepository, newItem: GithubRepository): Boolean =
+            oldItem == newItem
     }
 }

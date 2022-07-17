@@ -13,7 +13,6 @@ import com.waysnpaths.github.R
 import com.waysnpaths.github.feature.repository_details.domain.Stargazer
 
 class StargazersAdapter : ListAdapter<Stargazer, StargazersAdapter.Holder>(ItemCallback()) {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         return Holder(
             LayoutInflater.from(parent.context).inflate(R.layout.stargazer_rv_item, parent, false)
